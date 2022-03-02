@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="testdatabase:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/testdatabase_jar</output-path>
+    <root id="archive" name="testdatabase.jar">
+      <element id="module-output" name="testdatabase" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/mabdd_netbeans/MaBdd/lib/hsqldb.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
