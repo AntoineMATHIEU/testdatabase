@@ -1,29 +1,23 @@
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class connect {
     public static void connect() {
         Connection conn = null;
         try {
-            // db parameters
-            String url = "jdbc:sqlite:C:\\Users\\Antoine Mathieu\\IdeaProjects\\testdatabase\\Bombermantest.db";
-            // create a connection to the database
+            // SQLite connection string
+            Properties appProps = new Properties();
+            appProps.load(new FileInputStream("db.properties"));
+            String url = appProps.getProperty("url");
             conn = DriverManager.getConnection(url);
-
             System.out.println("Connection to SQLite has been established.");
 
-        } catch (SQLException e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
-        } finally {
-            try {
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
         }
 
 
