@@ -50,43 +50,39 @@ public class Select {
         System.out.println(level);
         return level;
     }
-    public void selectCurrentSkin(String username) {
+    public String selectCurrentSkin(String username) {
+        String currentSkin="";
         String sql = "SELECT currentSkin FROM bomberman WHERE username= ?";
         try (Connection conn = connect.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            // set the value
             pstmt.setString(1, username);
             //
             ResultSet rs = pstmt.executeQuery();
-
-            // loop through the result set
-
-                System.out.println(rs.getInt("currentSkin"));
-
+            currentSkin=rs.getString("currentSkin");
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        System.out.println(currentSkin);
+        return currentSkin;
     }
-    public void selectSkin(String username) {
-        String sql = "SELECT level FROM bomberman WHERE username= ?";
+    public int selectSkin(String username,String idSkin) {
+        int skinState =0;
+        String sql = "SELECT "+idSkin+" FROM bomberman WHERE username= ?";
         try (Connection conn = connect.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-            // set the value
             pstmt.setString(1, username);
-            //
             ResultSet rs = pstmt.executeQuery();
 
-            // loop through the result set
-            while (rs.next()) {
-                System.out.println(rs.getInt(""));
+            skinState=rs.getInt(idSkin);
 
-            }
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        System.out.println(skinState);
+        return  skinState;
     }
 }
 
