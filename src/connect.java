@@ -35,8 +35,13 @@ public class connect {
     public static void main(String[] args) {
 
         connect();
+
         Insert app = new Insert();
         // insert three new rows
-        app.insert("Anto","MdPTest" );
+        //app.insert("Anto","MdPTest" );
+        Select select = new Select();
+        select.selectLevel("ZER");
+        select.selectGold("ZER");
+        select.selectCurrentSkin("ZER");
     }
 }
