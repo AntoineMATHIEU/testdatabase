@@ -11,18 +11,6 @@ public class Insert {
      *
      * @return the Connection object
      */
-    private Connection connect() {
-        // SQLite connection string
-        String url = "jdbc:sqlite:C:\\Users\\Antoine Mathieu\\IdeaProjects\\testdatabase\\Bombermantest.db";
-        Connection conn = null;
-        try {
-            conn = DriverManager.getConnection(url);
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return conn;
-    }
-
 
     public void insert(String username,String MdP) {
         String sql = "INSERT INTO bomberman(username,MdP,level,currentSkin,skin1,skin2,gold) VALUES(?,?,1,1,1,0,0)";
@@ -41,7 +29,7 @@ public class Insert {
         {
             e.printStackTrace();
         }
-        try (Connection conn = this.connect();
+        try (Connection conn = connect.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, username);
             pstmt.setString(2, encryptedPassword);

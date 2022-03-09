@@ -1,6 +1,5 @@
 import java.io.FileInputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.*;
 import java.util.Properties;
 
 public class connect {
@@ -21,6 +20,26 @@ public class connect {
 
         return conn;
     }
+    public static int selectLevel(String username) {
+        int level=0;
+        String sql = "SELECT level FROM bomberman WHERE username= ?";
+        try (Connection conn = connect.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            // set the value
+            pstmt.setString(1, username);
+            //
+            ResultSet rs = pstmt.executeQuery();
+
+            level=rs.getInt("level");
+
+        }
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println(level);
+        return level;
+    }
 
     /**
      * @param args the command line arguments
@@ -33,7 +52,7 @@ public class connect {
         // insert three new rows
         //app.insert("Anto","MdPTest" );
         Select select = new Select();
-        select.selectLevel("ZER");
+        selectLevel("ZER");
         select.selectGold("ZER");
     }
 }
