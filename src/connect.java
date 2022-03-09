@@ -1,12 +1,10 @@
 import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.Properties;
 
 public class connect {
-    public static void connect() {
+    public static Connection connect() {
         Connection conn = null;
         try {
             // SQLite connection string
@@ -21,6 +19,7 @@ public class connect {
         }
 
 
+        return conn;
     }
 
     /**
@@ -36,6 +35,5 @@ public class connect {
         Select select = new Select();
         select.selectLevel("ZER");
         select.selectGold("ZER");
-        select.selectCurrentSkin("ZER");
     }
 }

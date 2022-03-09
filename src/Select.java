@@ -6,21 +6,12 @@ import java.sql.Statement;
 import java.sql.PreparedStatement;
 
 public class Select {
-    private Connection connect() {
-        // SQLite connection string
-        String url = "jdbc:sqlite:C:\\Users\\Antoine Mathieu\\IdeaProjects\\testdatabase\\Bombermantest.db";
-        Connection conn = null;
-        try {
-            conn = DriverManager.getConnection(url);
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return conn;
-    }
 
-    public void selectGold(String username) {
+
+    public int selectGold(String username) {
+        int gold =0;
         String sql = "SELECT gold FROM bomberman WHERE username= ?";
-        try (Connection conn = this.connect();
+        try (Connection conn = connect.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             // set the value
@@ -30,17 +21,18 @@ public class Select {
 
             // loop through the result set
             while (rs.next()) {
-                System.out.println(rs.getInt("gold"));
+                gold=rs.getInt("gold");
 
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        return gold;
     }
 
     public void selectLevel(String username) {
         String sql = "SELECT level FROM bomberman WHERE username= ?";
-        try (Connection conn = this.connect();
+        try (Connection conn = connect.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             // set the value
@@ -59,7 +51,7 @@ public class Select {
     }
     public void selectCurrentSkin(String username) {
         String sql = "SELECT currentSkin FROM bomberman WHERE username= ?";
-        try (Connection conn = this.connect();
+        try (Connection conn = connect.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             // set the value
@@ -78,7 +70,7 @@ public class Select {
     }
     public void selectSkin(String username) {
         String sql = "SELECT level FROM bomberman WHERE username= ?";
-        try (Connection conn = this.connect();
+        try (Connection conn = connect.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             // set the value
