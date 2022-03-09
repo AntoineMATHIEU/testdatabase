@@ -37,6 +37,6 @@ public class connect {
         connect();
         Insert app = new Insert();
         // insert three new rows
-        app.insert("ZER","MdPTest" );
+        app.insert("Anto","MdPTest" );
     }
 }
