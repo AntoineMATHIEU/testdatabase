@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 public class Select {
 
 
-    public int selectGold(String username) {
+    public static int selectGold(String username) {
         int gold =0;
         String sql = "SELECT gold FROM bomberman WHERE username= ?";
         try (Connection conn = connect.connect();
@@ -30,7 +30,7 @@ public class Select {
         return gold;
     }
 
-    public int selectLevel(String username) {
+    public static int selectLevel(String username) {
         int level=0;
         String sql = "SELECT level FROM bomberman WHERE username= ?";
         try (Connection conn = connect.connect();
@@ -50,7 +50,7 @@ public class Select {
         System.out.println(level);
         return level;
     }
-    public String selectCurrentSkin(String username) {
+    public static String selectCurrentSkin(String username) {
         String currentSkin="";
         String sql = "SELECT currentSkin FROM bomberman WHERE username= ?";
         try (Connection conn = connect.connect();
@@ -67,7 +67,7 @@ public class Select {
         System.out.println(currentSkin);
         return currentSkin;
     }
-    public int selectSkin(String username,String idSkin) {
+    public static int selectSkin(String username, String idSkin) {
         int skinState =0;
         String sql = "SELECT "+idSkin+" FROM bomberman WHERE username= ?";
         try (Connection conn = connect.connect();

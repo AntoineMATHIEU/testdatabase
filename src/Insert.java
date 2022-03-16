@@ -7,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class Insert {
 
-    public void insert(String username,String MdP) {
+    public static void insert(String username, String MdP) {
         String sql = "INSERT INTO bomberman(username,MdP,level,currentSkin,skin1,skin2,gold) VALUES(?,?,1,'skin1',1,0,0)";
         String encryptedPassword = null;
         try {

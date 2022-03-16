@@ -20,43 +20,9 @@ public class connect {
 
         return conn;
     }
-    public static int selectLevel(String username) {
-        int level=0;
-        String sql = "SELECT level FROM bomberman WHERE username= ?";
-        try (Connection conn = connect.connect();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-            // set the value
-            pstmt.setString(1, username);
-            //
-            ResultSet rs = pstmt.executeQuery();
-
-            level=rs.getInt("level");
-
-        }
-        catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        System.out.println(level);
-        return level;
-    }
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
 
-        connect();
-
-        //Insert app = new Insert();
-        // insert three new rows
-        //app.insert("tete","bonjour" );
-        //Select select = new Select();
-        //selectLevel("ZER");
-        //select.selectGold("ZER");
-
-        Update app = new Update();
-        //app.unlockSkin("tetelamenace","skin2");
-        app.changeSkin("tetelamenace","skin2");
-    }
 }

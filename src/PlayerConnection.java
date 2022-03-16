@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class PlayerConnection {
-    public boolean player(String username,String password){
+    public static boolean player(String username, String password){
         String testPassword = null;
         String encryptedPassword = null;
         try {
